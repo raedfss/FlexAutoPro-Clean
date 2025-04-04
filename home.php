@@ -18,7 +18,7 @@ $user_type = $_SESSION['user_type']; // admin أو user
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlexAuto | الصفحة الرئيسية</title>
     <style>
-        /* نفس التنسيقات التي طلبتها دون تغيير */
+        /* نفس التنسيقات السابقة */
         * { box-sizing: border-box; }
         body {
             margin: 0;
@@ -151,6 +151,47 @@ $user_type = $_SESSION['user_type']; // admin أو user
             background-color: rgba(255, 107, 107, 0.1);
             border-color: rgba(255, 107, 107, 0.6);
         }
+
+        /* زر الإصدارات */
+        .version-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #00c8ff, #007bff);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s;
+            margin-top: 20px;
+            border: 1px solid rgba(0, 200, 255, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .version-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shine 3s infinite;
+        }
+        .version-btn:hover {
+            background: linear-gradient(135deg, #007bff, #00c8ff);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+        .version-badge {
+            display: inline-block;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 5px;
+            font-size: 12px;
+        }
+
         footer {
             background-color: rgba(0, 0, 0, 0.9);
             color: #eee;
@@ -200,9 +241,15 @@ $user_type = $_SESSION['user_type']; // admin أو user
                 <a href="ecu-tuning.php">🚗 تعديل برمجة السيارة</a>
                 <a href="online-programming-ticket.php">🧾 حجز تذكرة برمجة أونلاين</a>
                 <a href="includes/my_tickets.php">📋 تذاكري السابقة</a>
-
             <?php endif; ?>
         </div>
+
+        <!-- زر الإصدارات الجديد -->
+        <!-- يُوجّه المستخدم إلى صفحة version.php (يمكنك تسميتها changelog.php أو about.php) -->
+        <a href="version.php" class="version-btn">
+            🔄 آخر التحديثات والتعديلات 
+            <span class="version-badge">v1.01</span>
+        </a>
 
         <div class="logout">
             <a href="logout.php">🔓 تسجيل الخروج</a>
