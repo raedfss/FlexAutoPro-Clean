@@ -199,7 +199,8 @@ $user_type = $_SESSION['user_type']; // admin أو user
                 <a href="airbag-reset.php">💥 مسح بيانات الحوادث</a>
                 <a href="ecu-tuning.php">🚗 تعديل برمجة السيارة</a>
                 <a href="online-programming-ticket.php">🧾 حجز تذكرة برمجة أونلاين</a>
-                <a href="tickets.php">📋 تذاكري السابقة</a>
+                <a href="includes/my_tickets.php">📋 تذاكري السابقة</a>
+
             <?php endif; ?>
         </div>
 
