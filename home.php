@@ -2,13 +2,14 @@
 session_start();
 
 // منع الدخول المباشر بدون تسجيل دخول
-if (!isset($_SESSION['email'])) {
+if (!isset($_SESSION['email']) || !isset($_SESSION['username'])) {
     header("Location: login.php");
     exit;
 }
 
-$username = $_SESSION['username'];
-$user_type = $_SESSION['user_type']; // admin أو user
+// تحضير المتغيرات مع حماية إضافية
+$username = isset($_SESSION['username']) ? $_SESSION['username'] : 'مستخدم';
+$user_type = isset($_SESSION['user_type']) ? $_SESSION['user_type'] : 'user'; // نضعه 'user' بشكل افتراضي لو غير موجود
 ?>
 
 <!DOCTYPE html>
@@ -244,8 +245,6 @@ $user_type = $_SESSION['user_type']; // admin أو user
             <?php endif; ?>
         </div>
 
-        <!-- زر الإصدارات الجديد -->
-        <!-- يُوجّه المستخدم إلى صفحة version.php (يمكنك تسميتها changelog.php أو about.php) -->
         <a href="version.php" class="version-btn">
             🔄 آخر التحديثات والتعديلات 
             <span class="version-badge">v1.01</span>
@@ -256,7 +255,6 @@ $user_type = $_SESSION['user_type']; // admin أو user
         </div>
     </div>
 </main>
-
 
 <footer>
     <div class="footer-highlight">ذكاءٌ في الخدمة، سرعةٌ في الاستجابة، جودةٌ بلا حدود.</div>
