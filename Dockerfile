@@ -7,3 +7,6 @@ COPY . /var/www/html/
 RUN a2enmod rewrite
 
 EXPOSE 80
+
+# تشغيل Apache كخدمة رئيسية
+CMD ["apache2-foreground"]
